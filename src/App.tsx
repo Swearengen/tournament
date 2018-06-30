@@ -1,12 +1,20 @@
-import * as React from 'react';
+import * as React from 'react'
 import {
   BrowserRouter as Router,
   Link,
   Route,
-} from 'react-router-dom';
+} from 'react-router-dom'
 
-import About from './components/about';
-import TournamentList from './components/tournamentList';
+import About from './components/about'
+import TournamentList from './components/tournamentList'
+
+import { TournamentListModel } from './models/TournamentList'
+
+const tournamentListMOdel = TournamentListModel.create({
+  items: [{
+    name: 'tournament 1'
+  }]
+})
 
 class App extends React.Component {
   public render() {
@@ -21,8 +29,8 @@ class App extends React.Component {
 
             <hr/>
 
-            <Route exact={true} path="/" render={(props) => <TournamentList {...props} tourProp='dfs' />}/>
-            <Route path="/tournaments" render={(props) => <TournamentList {...props} tourProp='fsdsf' />}/>
+            <Route exact={true} path="/" render={(props) => <TournamentList {...props} tournamentListModel={tournamentListMOdel} />}/>
+            <Route path="/tournaments" render={(props) => <TournamentList {...props} tournamentListModel={tournamentListMOdel} />}/>
             <Route path="/about" component={About}/>            
           </div>
         </Router>
@@ -31,4 +39,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default App
