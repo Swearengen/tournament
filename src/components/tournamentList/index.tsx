@@ -1,4 +1,3 @@
-import { observer } from "mobx-react"
 import * as React from 'react'
 import { Link, Route, RouteComponentProps } from 'react-router-dom'
 
@@ -38,10 +37,13 @@ class TournamentList extends React.Component<Props> {
                 </li>
                 </ul>            
 
-                <Route path={`${match.path}/:topicId`} component={TournamentDetails}/>
+                <Route 
+                    path={`${match.path}/:topicId`} 
+                    render={(props) => <TournamentDetails {...props} tournamentItem={this.props.tournamentListModel.items[0]}/>}
+                />
             </div>
         );
       }
 }
 
-export default observer(TournamentList)
+export default TournamentList

@@ -10,7 +10,7 @@ import TournamentList from './components/tournamentList'
 
 import { TournamentListModel } from './models/TournamentList'
 
-const tournamentListMOdel = TournamentListModel.create({
+const tournamentListModel = TournamentListModel.create({
   items: [{
     name: 'tournament 1'
   }]
@@ -29,8 +29,8 @@ class App extends React.Component {
 
             <hr/>
 
-            <Route exact={true} path="/" render={(props) => <TournamentList {...props} tournamentListModel={tournamentListMOdel} />}/>
-            <Route path="/tournaments" render={(props) => <TournamentList {...props} tournamentListModel={tournamentListMOdel} />}/>
+            <Route exact={true} path="/" render={(props) => <TournamentList {...props} tournamentListModel={tournamentListModel} />}/>
+            <Route path="/tournaments" render={(props) => <TournamentList {...props} tournamentListModel={tournamentListModel} />}/>
             <Route path="/about" component={About}/>            
           </div>
         </Router>
@@ -38,5 +38,9 @@ class App extends React.Component {
     );
   }
 }
+
+setTimeout(() => {
+    tournamentListModel.items[0].changeName('new name')
+}, 1000)
 
 export default App
