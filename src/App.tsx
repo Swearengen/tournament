@@ -1,9 +1,11 @@
+import Button from 'antd/lib/button'
 import * as React from 'react'
 import {
   BrowserRouter as Router,
   Link,
   Route,
 } from 'react-router-dom'
+import './App.css'
 
 import About from './components/about'
 import TournamentList from './components/tournamentList'
@@ -26,6 +28,7 @@ class App extends React.Component {
               <li><Link to="/tournaments">Tournaments</Link></li>            
               <li><Link to="/about">About</Link></li>            
             </ul>
+            <Button type="primary">Button</Button>
 
             <hr/>
 
