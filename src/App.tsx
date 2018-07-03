@@ -1,49 +1,32 @@
-import Button from 'antd/lib/button'
 import * as React from 'react'
-import {
-  BrowserRouter as Router,
-  Link,
-  Route,
-} from 'react-router-dom'
+
 import './App.css'
+import MainContent from './components/mainContent'
 
-import About from './components/about'
-import TournamentList from './components/tournamentList'
+import { Layout } from 'antd';
 
-import { TournamentListModel } from './models/TournamentList'
+const { Content, Footer, Header } = Layout;
 
-const tournamentListModel = TournamentListModel.create({
-  items: [{
-    name: 'tournament 1'
-  }]
-})
+import Navigation from './components/navigation';
 
 class App extends React.Component {
-  public render() {
-    return (
-      <div className="container">        
-        <Router>
-          <div>
-            <ul>
-              <li><Link to="/tournaments">Tournaments</Link></li>            
-              <li><Link to="/about">About</Link></li>            
-            </ul>
-            <Button type="primary">Button</Button>
-
-            <hr/>
-
-            <Route exact={true} path="/" render={(props) => <TournamentList {...props} tournamentListModel={tournamentListModel} />}/>
-            <Route path="/tournaments" render={(props) => <TournamentList {...props} tournamentListModel={tournamentListModel} />}/>
-            <Route path="/about" component={About}/>            
-          </div>
-        </Router>
-      </div>
-    );
-  }
+	public render() {
+		
+		return (
+			<Layout className="layout">
+				<Header>
+					<div className="logo" />
+					<Navigation />
+				</Header>
+				<Content style={{ padding: '0 50px' }}>
+					<MainContent />
+				</Content>
+				<Footer style={{ textAlign: 'center' }}>
+					Ant Design ©2016 Created by Ant UED
+    			</Footer>
+			</Layout>
+		);
+	}
 }
-
-setTimeout(() => {
-    tournamentListModel.items[0].changeName('new name')
-}, 1000)
 
 export default App

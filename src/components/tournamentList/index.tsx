@@ -12,26 +12,29 @@ interface Props extends RouteComponentProps<MatchParams> {
     tournamentListModel: typeof TournamentListModel.Type
 }
 
-class TournamentList extends React.Component<Props> {
+class TournamentList extends React.Component<Props> {    
+
     public render() {
         const { match } = this.props;
+        
+        console.log(match.url, match, 'ggg');
         
         return (
             <div>
                 <h2>Topics</h2>
                 <ul>
                 <li>
-                    <Link to={`${match.url}/tournament1`}>
+                    <Link to={`${this.rootPath()}/tournament1`}>
                         tournament1
                     </Link>
                 </li>
                 <li>
-                    <Link to={`${match.url}/tournament2`}>
+                    <Link to={`${this.rootPath()}/tournament2`}>
                         tournament2
                     </Link>
                 </li>
                 <li>
-                    <Link to={`${match.url}/tournament2`}>
+                    <Link to={`${this.rootPath()}/tournament2`}>
                         tournament2
                     </Link>
                 </li>
@@ -43,7 +46,17 @@ class TournamentList extends React.Component<Props> {
                 />
             </div>
         );
-      }
+    }
+
+    private rootPath() {
+        const { match } = this.props;
+
+        if (match.url === '/') {
+            return '/tournaments'
+        }
+
+        return match.url
+    }
 }
 
 export default TournamentList
