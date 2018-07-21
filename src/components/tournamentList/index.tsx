@@ -17,8 +17,6 @@ class TournamentList extends React.Component<Props> {
     public render() {
         const { match } = this.props;
         
-        console.log(match.url, match, 'ggg');
-        
         return (
             <div>
                 <h2>Topics</h2>

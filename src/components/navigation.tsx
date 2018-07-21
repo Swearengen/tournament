@@ -1,16 +1,69 @@
 import * as React from 'react'
-import { Link } from 'react-router-dom'
+import { match } from "react-router"
+import { NavLink } from 'react-router-dom'
 
+import './navigation.css'
 
-class Navigation extends React.Component {
+import {
+    Collapse,
+    Nav,
+    Navbar,
+    NavbarBrand,
+    NavbarToggler,
+    // NavItem,
+    // NavLink,
+} from 'reactstrap';
+
+interface State {
+    isOpen: boolean;
+}
+
+export class Navigation extends React.Component<{}, State> {
+
+    public state: State = {
+        isOpen: false,
+    };
+
+    public toggle = () => {
+        this.setState({
+            isOpen: !this.state.isOpen
+        });
+    }
+
+    public oddEvent = (matchParams: match<any>, location: any) => {
+        if (matchParams && !matchParams.isExact) {
+            return location.pathname === '/' || location.pathname.includes('tournaments')
+        }
+        
+        return matchParams ? true : false;    
+    }
 
     public render() {
+          
         return (
             <div>
-                <ul>
-                  <li><Link to="/tournaments">Tournaments</Link></li>            
-                  <li><Link to="/about">About</Link></li>            
-                </ul>
+                <Navbar color="light" light={true} expand="md">
+                    <div className="container">
+                        <NavbarBrand href="/">reactstrap</NavbarBrand>
+                        <NavbarToggler onClick={this.toggle} />
+                        <Collapse isOpen={this.state.isOpen} navbar={true}>
+                            <Nav className="ml-auto" navbar={true}>
+                                <NavLink to="/" activeClassName="active" isActive={this.oddEvent}>
+                                    {/* <NavLink> */}
+                                        {/* <Link to="/tournaments">Tournaments</Link> */}
+                                    {/* </NavLink> */}
+                                    Tournaments
+                                </NavLink>
+                                <NavLink to="/about" activeClassName="active" isActive={this.oddEvent}>
+                                    {/* <NavLink> */}
+                                        {/* <Link to="/about">About</Link> */}
+                                    {/* </NavLink> */}
+                                    About
+                                </NavLink>                        
+                            </Nav>
+                        </Collapse>
+                    </div>
+                </Navbar>                
             </div>        
         )
     }

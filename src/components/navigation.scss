@@ -1,0 +1,9 @@
+.navbar-nav {
+    a {
+        padding: 10px;
+        
+        &.active {
+            color: red;
+        }
+    }
+}
