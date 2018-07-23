@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { Link, Route, RouteComponentProps } from 'react-router-dom'
+import { Link, RouteComponentProps } from 'react-router-dom'
 
 import { TournamentListModel } from '../../models/TournamentList'
-import TournamentDetails from '../tournamentDetails'
+import Carousel from '../shared/carousel'
 
 interface MatchParams {
     name: string;
@@ -14,34 +14,28 @@ interface Props extends RouteComponentProps<MatchParams> {
 
 class TournamentList extends React.Component<Props> {    
 
-    public render() {
-        const { match } = this.props;
-        
+    public render() {                
         return (
             <div>
+                <Carousel />
                 <h2>Topics</h2>
                 <ul>
-                <li>
-                    <Link to={`${this.rootPath()}/tournament1`}>
-                        tournament1
-                    </Link>
-                </li>
-                <li>
-                    <Link to={`${this.rootPath()}/tournament2`}>
-                        tournament2
-                    </Link>
-                </li>
-                <li>
-                    <Link to={`${this.rootPath()}/tournament2`}>
-                        tournament2
-                    </Link>
-                </li>
+                    <li>
+                        <Link to={`${this.rootPath()}/tournament1`}>
+                            tournament1
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to={`${this.rootPath()}/tournament2`}>
+                            tournament2
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to={`${this.rootPath()}/tournament2`}>
+                            tournament2
+                        </Link>
+                    </li>
                 </ul>            
-
-                <Route 
-                    path={`${match.path}/:topicId`} 
-                    render={(props) => <TournamentDetails {...props} tournamentItem={this.props.tournamentListModel.items[0]}/>}
-                />
             </div>
         );
     }

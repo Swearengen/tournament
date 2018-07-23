@@ -42,7 +42,7 @@ export class Navigation extends React.Component<{}, State> {
             <div>
                 <Navbar color="light" light={true} expand="md">
                     <div className="container">
-                        <NavbarBrand href="/">reactstrap</NavbarBrand>
+                        <NavbarBrand href="/" />
                         <NavbarToggler onClick={this.toggle} />
                         <Collapse isOpen={this.state.isOpen} navbar={true}>
                             <Nav className="ml-auto" navbar={true}>
