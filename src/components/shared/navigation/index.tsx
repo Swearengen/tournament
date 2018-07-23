@@ -9,9 +9,7 @@ import {
     Nav,
     Navbar,
     NavbarBrand,
-    NavbarToggler,
-    // NavItem,
-    // NavLink,
+    NavbarToggler    
 } from 'reactstrap';
 
 interface State {
@@ -48,16 +46,10 @@ export class Navigation extends React.Component<{}, State> {
                         <NavbarToggler onClick={this.toggle} />
                         <Collapse isOpen={this.state.isOpen} navbar={true}>
                             <Nav className="ml-auto" navbar={true}>
-                                <NavLink to="/" activeClassName="active" isActive={this.oddEvent}>
-                                    {/* <NavLink> */}
-                                        {/* <Link to="/tournaments">Tournaments</Link> */}
-                                    {/* </NavLink> */}
+                                <NavLink to="/" activeClassName="active" isActive={this.oddEvent}>                                    
                                     Tournaments
                                 </NavLink>
-                                <NavLink to="/about" activeClassName="active" isActive={this.oddEvent}>
-                                    {/* <NavLink> */}
-                                        {/* <Link to="/about">About</Link> */}
-                                    {/* </NavLink> */}
+                                <NavLink to="/about" activeClassName="active" isActive={this.oddEvent}>                                    
                                     About
                                 </NavLink>                        
                             </Nav>
