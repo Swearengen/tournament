@@ -1,8 +1,6 @@
 import * as React from 'react'
 import { Button } from 'reactstrap'
 
-import './about.css'
-
 class About extends React.Component {
 	public render() {
 		return (

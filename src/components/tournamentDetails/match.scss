@@ -1,0 +1,62 @@
+.match {
+    font-family: 'Francois One', sans-serif;
+
+    &__row {
+        border: {
+            left: 1px solid #e1e1e1;
+            right: 1px solid #e1e1e1;
+            bottom: 1px solid #e1e1e1;
+            top: none;
+        }
+        
+        &.bottomless {
+            border-top: 1px solid #e1e1e1;
+            border-bottom: none;
+        }
+
+        &.winner {
+            background-color: #639080;
+            color: white;
+        }
+    }
+
+    &__players-box {
+        min-width: 190px;
+        padding: 5px;   
+        display: flex;
+        align-items: center;
+    }
+
+    &__player-image {
+        width: 45px;
+        height: 45px;
+        float: left;
+    }
+
+    &__player-name{
+        font-size: 14px;
+        margin-bottom: 0;
+        margin-left: 3PX;
+
+    }
+
+    &__player-ranking {
+        margin-left: 3px;
+    }
+
+    &__score-box {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        font-size: 20px;
+        border-right: 1px solid #e1e1e1;   
+        
+        &:nth-child(2) {
+            border-left: 1px solid #e1e1e1;
+        }
+
+        &:last-child {
+            border-right: none;
+        }
+    }
+}
