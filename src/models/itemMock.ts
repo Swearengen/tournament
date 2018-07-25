@@ -1,7 +1,7 @@
-import playerImg2 from '../../assets/boleli.jpg'
-import playerImg1 from '../../assets/nadal.jpg'
+import playerImg2 from '../assets/boleli.jpg'
+import playerImg1 from '../assets/nadal.jpg'
 
-export const item = {
+export const mockedTournament = {
     name: 'tournament 1',
     rounds: [
         {

@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { Route } from 'react-router-dom'
 
+import { mockedTournament } from '../models/itemMock'
 import { TournamentListModel } from '../models/TournamentList'
 import About from './about'
 import TournamentDetails from './tournamentDetails'
@@ -8,7 +9,8 @@ import TournamentList from './tournamentList'
 
 const tournamentListModel = TournamentListModel.create({
 	items: [{
-		name: 'tournament 1'
+        name: 'tournament 1',
+        tournament: mockedTournament
 	}]
 })
 
@@ -23,6 +25,7 @@ class MainContent extends React.Component {
                 <Route path="/about" component={About} />
                 <Route 
                     path={`/tournaments/:topicId`} 
+                    // @ts-ignore
                     render={(props) => <TournamentDetails {...props} tournamentItem={tournamentListModel.items[0]}/>}
                 />
             </div>
@@ -31,6 +34,7 @@ class MainContent extends React.Component {
     
 }
 setTimeout(() => {
+    // @ts-ignore
     tournamentListModel.items[0].changeName('new name')
 }, 1000)
 

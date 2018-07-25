@@ -16,6 +16,8 @@ interface Props extends RouteComponentProps<MatchParams> {
 
 class TournamentDetails extends React.Component<Props> {
   	public render() {
+		  console.log(this.props.tournamentItem.tournament, 'ggg');
+		  
     	return (
 			<div style={{ paddingTop: 50, paddingBottom: 50 }}>
 				<Container fluid={true}>
