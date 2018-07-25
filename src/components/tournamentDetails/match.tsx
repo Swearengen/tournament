@@ -8,6 +8,8 @@ import playerImg1 from '../../assets/nadal.jpg'
 class Match extends React.Component<{}, {}> {
 
 	public render () {
+        console.log(playerImg1, 'fff');
+        
         return (
             <div className='match'>
                 <div className='match__row bottomless winner d-inline-flex align-items-stretch'>
