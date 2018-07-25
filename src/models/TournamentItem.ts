@@ -1,19 +1,19 @@
 import { types } from "mobx-state-tree";
 
-const test = {
-    name: 'dfd',
-    id: 'df'
-}
+    // const test = {
+    //     name: 'dfd',
+    //     id: 'df'
+    // }
 
-interface Test {
-    name?: string,
-    id?: string
-}
+// interface Test {
+//     name: string,
+//     id: string
+// }
 
 export const TournamentItemModel = types
     .model({
         name: types.string,
-        something: types.frozen<Test>(test)
+        // something: types.frozen()
     })
     .actions(self => ({
         changeName(newName: string) {
