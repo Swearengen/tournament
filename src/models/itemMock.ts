@@ -1,12 +1,16 @@
+import * as moment from 'moment'
+
 import playerImg2 from '../assets/boleli.jpg'
 import playerImg1 from '../assets/nadal.jpg'
 
 export interface Tournament {
     name: string;
     rounds: Round[];
+    time: Date;
+    location: string;
 }
 
-interface Round {
+export interface Round {
     roundNumber: number;
     matches: Match[];
 }
@@ -25,12 +29,14 @@ export interface Player {
 }
 
 export interface Set {
-    score: number;    
-    tieBreakScore?: number;
+    score: string;    
+    tieBreakScore?: string;
 }
 
 export const mockedTournament = {
     name: 'tournament 1',
+    time: moment('2018-02-08 09:30').toDate(),
+    location: 'DSR Trnje',
     rounds: [
         {
             roundNumber: 1,
@@ -43,14 +49,14 @@ export const mockedTournament = {
                         isWinner: true,
                         sets: [
                             {
-                                score: 6
+                                score: '6'
                             },
                             {
-                                score: 3                                
+                                score: '3'                                
                             },
                             {
-                                score: 7,                                
-                                tieBreakScore: 7
+                                score: '7',                                
+                                tieBreakScore: '7'
                             }
                         ]
                     },
@@ -59,14 +65,14 @@ export const mockedTournament = {
                         playerImg: playerImg2,                        
                         sets: [
                             {
-                                score: 3                                
+                                score: '3'                                
                             },
                             {
-                                score: 6                                
+                                score: '6'                                
                             },
                             {
-                                score: 6,                                
-                                tieBreakScore: 3
+                                score: '6',                                
+                                tieBreakScore: '3'
                             }
                         ]
                     }
@@ -79,10 +85,13 @@ export const mockedTournament = {
                         playerImg: playerImg1,                        
                         sets: [
                             {
-                                score: 3
+                                score: '3'
                             },
                             {
-                                score: 2
+                                score: '2'
+                            },
+                            {
+                                score: '-'
                             }                            
                         ]
                     },
@@ -92,10 +101,47 @@ export const mockedTournament = {
                         isWinner: true,                       
                         sets: [
                             {
-                                score: 6
+                                score: '6'
                             },
                             {
-                                score: 6
+                                score: '6'
+                            },
+                            {
+                                score: '-'
+                            }
+                        ]
+                    }
+                },
+
+                {
+                    player1: {
+                        name: "Damir Dzumhur",
+                        playerImg: playerImg1,                        
+                        sets: [
+                            {
+                                score: '3'
+                            },
+                            {
+                                score: '2'
+                            },
+                            {
+                                score: '3'
+                            }                            
+                        ]
+                    },
+                    player2: {
+                        name: "Lord Gulbis",                        
+                        playerImg: playerImg2, 
+                        isWinner: true,                       
+                        sets: [
+                            {
+                                score: '6'
+                            },
+                            {
+                                score: '6'
+                            },
+                            {
+                                score: '10'
                             }
                         ]
                     }

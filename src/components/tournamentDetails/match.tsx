@@ -61,7 +61,7 @@ class Match extends React.Component<Props, {}> {
                     <span>
                         {set.score}
                         {set.tieBreakScore && 
-                            <sub>{` (${set.tieBreakScore})`}</sub>
+                            <sub>{`(${set.tieBreakScore})`}</sub>
                         }
                     </span>                            
                 </div>
