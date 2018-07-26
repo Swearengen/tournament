@@ -1,6 +1,34 @@
 import playerImg2 from '../assets/boleli.jpg'
 import playerImg1 from '../assets/nadal.jpg'
 
+export interface Tournament {
+    name: string;
+    rounds: Round[];
+}
+
+interface Round {
+    roundNumber: number;
+    matches: Match[];
+}
+
+export interface Match {
+    player1: Player;
+    player2: Player;
+}
+
+export interface Player {
+    name: string;
+    ranking?: number;
+    playerImg: string;
+    isWinner?: boolean;
+    sets: Set[];
+}
+
+export interface Set {
+    score: number;    
+    tieBreakScore?: number;
+}
+
 export const mockedTournament = {
     name: 'tournament 1',
     rounds: [
@@ -15,16 +43,13 @@ export const mockedTournament = {
                         isWinner: true,
                         sets: [
                             {
-                                score: 6,
-                                isTieBreak: false
+                                score: 6
                             },
                             {
-                                score: 2,
-                                isTieBreak: false
+                                score: 3                                
                             },
                             {
-                                score: 7,
-                                isTieBreak: true,
+                                score: 7,                                
                                 tieBreakScore: 7
                             }
                         ]
@@ -34,16 +59,13 @@ export const mockedTournament = {
                         playerImg: playerImg2,                        
                         sets: [
                             {
-                                score: 3,
-                                isTieBreak: false
+                                score: 3                                
                             },
                             {
-                                score: 6,
-                                isTieBreak: false
+                                score: 6                                
                             },
                             {
-                                score: 6,
-                                isTieBreak: true,
+                                score: 6,                                
                                 tieBreakScore: 3
                             }
                         ]
@@ -57,12 +79,10 @@ export const mockedTournament = {
                         playerImg: playerImg1,                        
                         sets: [
                             {
-                                score: 3,
-                                isTieBreak: false
+                                score: 3
                             },
                             {
-                                score: 2,
-                                isTieBreak: false
+                                score: 2
                             }                            
                         ]
                     },
@@ -72,12 +92,10 @@ export const mockedTournament = {
                         isWinner: true,                       
                         sets: [
                             {
-                                score: 6,
-                                isTieBreak: false
+                                score: 6
                             },
                             {
-                                score: 6,
-                                isTieBreak: false
+                                score: 6
                             }
                         ]
                     }
@@ -85,4 +103,4 @@ export const mockedTournament = {
             ]
         }
     ]
-}
+} as Tournament

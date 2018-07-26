@@ -1,59 +1,71 @@
 import * as React from 'react';
 
+import { Match as MatchType, Player } from '../../models/itemMock'
 import './match.css'
 
-import playerImg2 from '../../assets/boleli.jpg'
-import playerImg1 from '../../assets/nadal.jpg'
+interface Props {
+    match: MatchType
+}
 
-class Match extends React.Component<{}, {}> {
+class Match extends React.Component<Props, {}> {    
 
-	public render () {        
+	public render () {    
+        const { player1, player2 } = this.props.match    
+
         return (
             <div className='match'>
-                <div className='match__row bottomless winner d-inline-flex align-items-stretch'>
-                    <div className='match__players-box'>
-                        <img className='match__player-image' src={playerImg1} />
-                        <p className='match__player-name'>
-                            <strong>Player name</strong>
-                            <span className='match__player-ranking'>(1)</span>
-                        </p>
-                    </div>
+                <div className={`
+                    match__row 
+                    bottomless 
+                    d-inline-flex 
+                    align-items-stretch
+                    ${player1.isWinner ? 'winner' : ''}
+                `}>
+                    {this.renderPlayerBox(player1)}
 
-                    <div className='match__score-box'>
-                        <span>6</span>
-                    </div>
-
-                    <div className='match__score-box'>
-                        <span>2</span>
-                    </div>
-
-                    <div className='match__score-box'>
-                        <span>7 <sub>(7)</sub></span>
-                    </div>
+                    {this.renderPlayerSets(player1)}
                 </div>                
 
-                <div className='match__row   d-inline-flex align-items-stretch'>
-                    <div className='match__players-box'>
-                        <img className='match__player-image' src={playerImg2} />
-                        <p className='match__player-name'>
-                            <strong>Player name</strong>
-                            <span className='match__player-ranking'>(1)</span>
-                        </p>
-                    </div>
+                <div className={`
+                    match__row 
+                    d-inline-flex 
+                    align-items-stretch
+                    ${player2.isWinner ? 'winner' : ''}
+                `}>
+                    {this.renderPlayerBox(player2)}
 
-                    <div className='match__score-box'>
-                        <span>3</span>
-                    </div>
-
-                    <div className='match__score-box'>
-                        <span>6</span>
-                    </div>
-
-                    <div className='match__score-box'>
-                        <span>6 <sub>(3)</sub></span>
-                    </div>
+                    {this.renderPlayerSets(player2)}
                 </div>                
             </div>
+        )
+    }
+
+    private renderPlayerBox(player: Player) {
+        return (
+            <div className='match__players-box'>
+                <img className='match__player-image' src={player.playerImg} />
+                <p className='match__player-name'>
+                    <strong>{player.name}</strong>
+                    {player.ranking && 
+                        <span className='match__player-ranking'>({player.ranking})</span>
+                    }
+                </p>
+            </div>
+        )
+    }
+
+    private renderPlayerSets(player: Player) {
+        return (
+            player.sets.map((set, index) =>
+                <div key={`${player.name}-set${index}`} className='match__score-box'>                            
+                    <span>
+                        {set.score}
+                        {set.tieBreakScore && 
+                            <sub>{` (${set.tieBreakScore})`}</sub>
+                        }
+                    </span>                            
+                </div>
+            )
         )
     }
 }

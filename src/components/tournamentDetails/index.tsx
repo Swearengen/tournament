@@ -29,7 +29,7 @@ class TournamentDetails extends React.Component<Props> {
 							md={{size: 6, offset: 0}}
 							lg={{size: 4, offset: 0}}
 						>
-							<Match />
+							<Match match={this.props.tournamentItem.tournament!.rounds[0].matches[0]} />
 						</Col>
 						<Col 
 							xs={{size: 10, offset: 1}} 
