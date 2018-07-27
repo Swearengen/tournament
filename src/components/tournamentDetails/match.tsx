@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import { Match as MatchType, Player } from '../../models/itemMock'
 import './match.css'
 
@@ -14,24 +16,13 @@ class Match extends React.Component<Props, {}> {
 
         return (
             <div className='match'>
-                <div className={`
-                    match__row 
-                    bottomless 
-                    d-inline-flex 
-                    align-items-stretch
-                    ${player1.isWinner ? 'winner' : ''}
-                `}>
+                <div className={`match__row bottomless d-inline-flex align-items-stretch ${player1.isWinner ? 'winner' : ''}`}>
                     {this.renderPlayerBox(player1)}
 
                     {this.renderPlayerSets(player1)}
                 </div>                
 
-                <div className={`
-                    match__row 
-                    d-inline-flex 
-                    align-items-stretch
-                    ${player2.isWinner ? 'winner' : ''}
-                `}>
+                <div className={`match__row d-inline-flex align-items-stretch ${player2.isWinner ? 'winner' : ''}`}>
                     {this.renderPlayerBox(player2)}
 
                     {this.renderPlayerSets(player2)}
@@ -43,7 +34,13 @@ class Match extends React.Component<Props, {}> {
     private renderPlayerBox(player: Player) {
         return (
             <div className='match__players-box'>
-                <img className='match__player-image' src={player.playerImg} />
+                {player.playerImg ? (
+                    <img className='match__player-image' src={player.playerImg} />
+                ) : (
+                    <span className='match__palyer-image-placeholder'>
+                        <FontAwesomeIcon icon="user" />
+                    </span>
+                )}
                 <p className='match__player-name'>
                     <strong>{player.name}</strong>
                     {player.ranking && 

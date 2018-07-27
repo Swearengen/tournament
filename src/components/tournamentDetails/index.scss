@@ -1,0 +1,12 @@
+.tournament-detail {
+    padding: 50px 0; 
+
+    &__main-title {
+        text-align: center; 
+        margin-bottom: 50px;
+    }
+
+    &__match-pair {
+        position: relative;
+    }
+}

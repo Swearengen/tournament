@@ -5,6 +5,7 @@ import { Col, Container, Row } from 'reactstrap'
 
 import { Match as MatchModel, Round } from '../../models/itemMock'
 import { TournamentItemModel } from '../../models/TournamentItem'
+import './index.css'
 import Match from './match'
 
 interface MatchParams {
@@ -20,26 +21,47 @@ class TournamentDetails extends React.Component<Props> {
 		const { tournament } = this.props.tournamentItem
 		  
     	return (
-			<div style={{ paddingTop: 50, paddingBottom: 50 }}>
+			<div  className='tournament-detail'>
 				<Container fluid={true}>
-					<h2 style={{textAlign: 'center', marginBottom: 50}}>{this.props.tournamentItem.name}</h2>					
+					<h2 className='tournament-detail__main-title'>{this.props.tournamentItem.name}</h2>					
 					<Row>
-						{tournament!.rounds.map((round: Round) =>							
+						{tournament!.rounds.map((round: Round, j: number) =>							
 							<Col key={`Round${round.roundNumber}`}
 								xs={{size: 10, offset: 1}} 
 								md={{size: 6, offset: 0}}
 								lg={{size: 4, offset: 0}}
+								style={this.getColumnMargin(j)}
 							>
-								{round.matches.map((matchItem: MatchModel, index) =>
-									<Match key={`Match${round.roundNumber}-${index}`} match={matchItem} />
-								)}
+								{round.matches.map((matchPairs: MatchModel[], index) =>
+									<div 
+										key={`MatchPair${round.roundNumber}-${index}`}
+										className='tournament-detail__match-pair'
+									>
+										{matchPairs.map((matchItem: MatchModel, i) =>
+											<Match key={`Match${round.roundNumber}-${index}-${i}`} match={matchItem} />
+										)}
+									</div>
+								)}								
 							</Col>
 						)}						
 					</Row>	
 				</Container>
 			</div>
     	)
-  	}
+	}
+	  
+	private getColumnMargin(index: number) {
+		switch (index) {
+			case 0:
+				return { marginTop: 0 }						
+			
+			case 1:
+				return { marginTop: 85 }
+
+			default:
+				return { marginTop: 0 }				
+		}
+	}
 }
 
 export default observer(TournamentDetails)
