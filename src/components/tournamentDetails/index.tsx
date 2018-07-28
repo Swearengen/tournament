@@ -2,6 +2,7 @@ import { observer } from "mobx-react"
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import { Col, Container, Row } from 'reactstrap'
+import cc from "classcat"
 
 import { Match as MatchModel, Round } from '../../models/itemMock'
 import { TournamentItemModel } from '../../models/TournamentItem'
@@ -35,7 +36,10 @@ class TournamentDetails extends React.Component<Props> {
 								{round.matches.map((matchPairs: MatchModel[], index) =>
 									<div 
 										key={`MatchPair${round.roundNumber}-${index}`}
-										className='tournament-detail__match-pair'
+										className={cc([
+											'tournament-detail__match-pair',
+											`column-num-${j+1}`
+										])}
 									>
 										{matchPairs.map((matchItem: MatchModel, i) =>
 											<Match key={`Match${round.roundNumber}-${index}-${i}`} match={matchItem} />

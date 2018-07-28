@@ -1,4 +1,5 @@
 import * as React from 'react';
+import cc from "classcat"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -16,13 +17,24 @@ class Match extends React.Component<Props, {}> {
 
         return (
             <div className='match'>
-                <div className={`match__row bottomless d-inline-flex align-items-stretch ${player1.isWinner ? 'winner' : ''}`}>
+                <div className={cc([
+                    'match__row',
+                    'bottomless',
+                    'd-inline-flex',
+                    'align-items-stretch',
+                    { winner: player1.isWinner }
+                ])}>
                     {this.renderPlayerBox(player1)}
 
                     {this.renderPlayerSets(player1)}
                 </div>                
 
-                <div className={`match__row d-inline-flex align-items-stretch ${player2.isWinner ? 'winner' : ''}`}>
+                <div className={cc([
+                    'match__row',
+                    'd-inline-flex',
+                    'align-items-stretch',
+                    { winner: player2.isWinner }
+                ])}>
                     {this.renderPlayerBox(player2)}
 
                     {this.renderPlayerSets(player2)}

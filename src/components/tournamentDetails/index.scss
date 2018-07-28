@@ -8,5 +8,28 @@
 
     &__match-pair {
         position: relative;
+
+        &:last-child {
+            .match:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        &.column-num-2, &.column-num-3 {
+            .match__row {
+                &:first-child {
+                    &:before {
+                        position: absolute;
+                        content: "";
+                        top: 100%;
+                        left: -40px;
+                        width: 38px;
+                        height: 0;
+                        margin-top: -1px;
+                        border-top: 1px solid #e1e1e1;
+                    }
+                }
+            }
+        }
     }
 }
