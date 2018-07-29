@@ -5,7 +5,7 @@ export const TournamentItemModel = types
         id: types.identifier,
         name: types.string,
         location: types.string,
-        dateTime: types.Date,
+        dateTime: types.string,
         rounds: types.optional(types.frozen(), [])
     })
     .actions(self => ({

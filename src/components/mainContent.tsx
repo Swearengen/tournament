@@ -1,27 +1,21 @@
 import * as React from 'react'
 import { Route } from 'react-router-dom'
-import * as moment from 'moment'
 
-import { rounds as mockedRounds } from '../models/itemMock'
 import { TournamentListModel } from '../models/TournamentList'
 import About from './about'
 import TournamentDetails from './tournamentDetails'
 import TournamentList from './tournamentList'
 
-const tournamentListModel = TournamentListModel.create({
-	items: [{
-        id: '1',
-        name: 'ffff',
-        location: 'DSR Trnje',
-        dateTime: moment('2018-02-08 09:30').toDate(),
-        rounds: mockedRounds
-    }]
-})
+interface Props {
+    tournamentListModel: typeof TournamentListModel.Type
+}
 
-class MainContent extends React.Component {
+class MainContent extends React.Component<Props> {
     
     public render() {        
 
+        const { tournamentListModel } = this.props        
+        
         return (
             <div>
                 <Route exact={true} path="/" render={(props) => <TournamentList {...props} tournamentListModel={tournamentListModel} />} />
