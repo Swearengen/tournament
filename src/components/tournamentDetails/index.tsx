@@ -30,8 +30,7 @@ class TournamentDetails extends React.Component<Props> {
 							<Col key={`Round${round.roundNumber}`}
 								xs={{size: 10, offset: 1}} 
 								md={{size: 6, offset: 0}}
-								lg={{size: 4, offset: 0}}
-								style={this.getColumnMargin(j)}
+								lg={{size: 4, offset: 0}}								
 							>
 								{round.matches.map((matchPairs: MatchModel[], index) =>
 									<div 
@@ -52,19 +51,6 @@ class TournamentDetails extends React.Component<Props> {
 				</Container>
 			</div>
     	)
-	}
-	  
-	private getColumnMargin(index: number) {
-		switch (index) {
-			case 0:
-				return { marginTop: 0 }						
-			
-			case 1:
-				return { marginTop: 85 }
-
-			default:
-				return { marginTop: 0 }				
-		}
 	}
 }
 

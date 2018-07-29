@@ -180,6 +180,147 @@ export const mockedTournament = {
                             ]
                         }
                     }
+                ],
+
+                [
+
+                    {
+                        player1: {
+                            name: "Rafael Nadal",
+                            ranking: 1,
+                            playerImg: playerImg1,
+                            isWinner: true,
+                            sets: [
+                                {
+                                    score: '6'
+                                },
+                                {
+                                    score: '3'                                
+                                },
+                                {
+                                    score: '7',                                
+                                    tieBreakScore: '7'
+                                }
+                            ]
+                        },
+                        player2: {
+                            name: "Simone Bolelli",                        
+                            playerImg: playerImg2,                        
+                            sets: [
+                                {
+                                    score: '3'                                
+                                },
+                                {
+                                    score: '6'                                
+                                },
+                                {
+                                    score: '6',                                
+                                    tieBreakScore: '3'
+                                }
+                            ]
+                        }
+                    },
+    
+                    {
+                        player1: {
+                            name: "Benoit Paire",
+                            ranking: 10,
+                            playerImg: playerImg1,                        
+                            sets: [
+                                {
+                                    score: '3'
+                                },
+                                {
+                                    score: '2'
+                                },
+                                {
+                                    score: '-'
+                                }                            
+                            ]
+                        },
+                        player2: {
+                            name: "Fabio Fognini",                                                
+                            isWinner: true,                       
+                            sets: [
+                                {
+                                    score: '6'
+                                },
+                                {
+                                    score: '6'
+                                },
+                                {
+                                    score: '-'
+                                }
+                            ]
+                        }
+                    }
+                ],
+                [
+                    {
+                        player1: {
+                            name: "Denis Shapovalov",
+                            playerImg: playerImg1,                        
+                            sets: [
+                                {
+                                    score: '3'
+                                },
+                                {
+                                    score: '2'
+                                },
+                                {
+                                    score: '3'
+                                }                            
+                            ]
+                        },
+                        player2: {
+                            name: "Ivo Karlovic",                                                
+                            isWinner: true,                       
+                            sets: [
+                                {
+                                    score: '6'
+                                },
+                                {
+                                    score: '6'
+                                },
+                                {
+                                    score: '10'
+                                }
+                            ]
+                        }
+                    },
+
+                    {
+                        player1: {
+                            name: "Damir Dzumhur",
+                            playerImg: playerImg1,                        
+                            sets: [
+                                {
+                                    score: '3'
+                                },
+                                {
+                                    score: '2'
+                                },
+                                {
+                                    score: '3'
+                                }                            
+                            ]
+                        },
+                        player2: {
+                            name: "Lord Gulbis",                                                
+                            isWinner: true,                       
+                            sets: [
+                                {
+                                    score: '6'
+                                },
+                                {
+                                    score: '6'
+                                },
+                                {
+                                    score: '10'
+                                }
+                            ]
+                        }
+                    }
                 ]
 
             ]
@@ -254,6 +395,159 @@ export const mockedTournament = {
                                 },
                                 {
                                     score: '10'
+                                }
+                            ]
+                        }
+                    }
+                ],
+
+                [
+                    {
+                        player1: {
+                            name: "Rafael Nadal",
+                            ranking: 1,
+                            playerImg: playerImg1,
+                            isWinner: true,
+                            sets: [
+                                {
+                                    score: '2'
+                                },
+                                {
+                                    score: '6'                                
+                                },
+                                {
+                                    score: '10'                                                               
+                                }
+                            ]
+                        },
+                        player2: {
+                            name: "Fabio Fognini",                                                                                                
+                            sets: [
+                                {
+                                    score: '6'
+                                },
+                                {
+                                    score: '3'
+                                },
+                                {
+                                    score: '8'                                                                   
+                                }
+                            ]
+                        }
+                    }, 
+                    
+                    {
+                        player1: {
+                            name: "Ivo Karlovic",                                                                            
+                            sets: [
+                                {
+                                    score: '6',                                
+                                    tieBreakScore: '5'
+                                },
+                                {
+                                    score: '7',                                
+                                    tieBreakScore: '7'
+                                },
+                                {
+                                    score: '8'
+                                }
+                            ]
+                        },
+                        player2: {
+                            name: "Lord Gulbis",                                                
+                            isWinner: true,                       
+                            sets: [
+                                {
+                                    score: '7',                                
+                                    tieBreakScore: '7'
+                                },
+                                {
+                                    score: '6',                                
+                                    tieBreakScore: '5'
+                                },
+                                {
+                                    score: '10'
+                                }
+                            ]
+                        }
+                    }
+                ]
+            ]
+        },
+
+        {
+            roundNumber: 3,
+            matches: [
+                [
+                    {
+                        player1: {
+                            name: "Rafael Nadal",
+                            ranking: 1,
+                            playerImg: playerImg1,
+                            isWinner: true,
+                            sets: [
+                                {
+                                    score: '7',
+                                    tieBreakScore: '7'
+                                },
+                                {
+                                    score: '4'                                
+                                },
+                                {
+                                    score: '10'                                                               
+                                }
+                            ]
+                        },
+                        player2: {
+                            name: "Lord Gulbis",                                                                                                
+                            sets: [
+                                {
+                                    score: '6',
+                                    tieBreakScore: '5'
+                                },
+                                {
+                                    score: '6'
+                                },
+                                {
+                                    score: '8'                                                                   
+                                }
+                            ]
+                        }
+                    }
+                ],
+
+                [
+                    {
+                        player1: {
+                            name: "Rafael Nadal",
+                            ranking: 1,
+                            playerImg: playerImg1,
+                            isWinner: true,
+                            sets: [
+                                {
+                                    score: '7',
+                                    tieBreakScore: '7'
+                                },
+                                {
+                                    score: '4'                                
+                                },
+                                {
+                                    score: '10'                                                               
+                                }
+                            ]
+                        },
+                        player2: {
+                            name: "Lord Gulbis",                                                                                                
+                            sets: [
+                                {
+                                    score: '6',
+                                    tieBreakScore: '5'
+                                },
+                                {
+                                    score: '6'
+                                },
+                                {
+                                    score: '8'                                                                   
                                 }
                             ]
                         }
