@@ -10,15 +10,15 @@ import MainContent from './components/mainContent'
 import Navigation from './components/shared/navigation'
 library.add(faUser)
 
-const tournamentListModel = TournamentListModel.create({
-	// items: [{
-    //     id: '1',
-    //     name: 'ffff',
-    //     location: 'DSR Trnje',
-    //     dateTime: moment('2018-02-08 09:30').toDate(),
-    //     rounds: mockedRounds
-    // }]
-})
+const fetcher = (url: string) => window.fetch(url).then(response => response.json())
+const tournamentListModel = TournamentListModel.create(	
+	{},
+	{
+        fetch: fetcher
+    }
+)
+
+tournamentListModel.fetchTournaments()
 
 class App extends React.Component {
 	public render() {

@@ -15,6 +15,8 @@ class MainContent extends React.Component<Props> {
     public render() {        
 
         const { tournamentListModel } = this.props        
+        console.log(tournamentListModel.items.length);
+        
         
         return (
             <div>
