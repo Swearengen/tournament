@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Route } from 'react-router-dom'
+import * as _ from 'lodash'
 
 import { TournamentListModel } from '../models/TournamentList'
 import About from './about'
@@ -14,9 +15,7 @@ class MainContent extends React.Component<Props> {
     
     public render() {        
 
-        const { tournamentListModel } = this.props        
-        console.log(tournamentListModel.items.length);
-        
+        const { tournamentListModel } = this.props                        
         
         return (
             <div>
@@ -28,7 +27,11 @@ class MainContent extends React.Component<Props> {
                     render={(props) => <TournamentDetails 
                         {...props} 
                         // @ts-ignore
-                        tournamentItem={tournamentListModel.items.length > 0 ? tournamentListModel.items[0] : undefined}/>
+                        tournamentItem={
+                            tournamentListModel.items.length > 0 ? 
+                            _.find(tournamentListModel.items, (item) => item.id === props.match.params.topicId) :                            
+                            undefined
+                        }/>
                     }
                 />
             </div>
@@ -36,9 +39,5 @@ class MainContent extends React.Component<Props> {
     }
     
 }
-// setTimeout(() => {
-//     // @ts-ignore
-//     tournamentListModel.items[0].changeName('new name')
-// }, 1000)
 
 export default MainContent

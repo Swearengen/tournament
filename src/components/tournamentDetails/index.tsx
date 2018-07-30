@@ -4,7 +4,7 @@ import { RouteComponentProps } from 'react-router-dom';
 import { Col, Container, Row } from 'reactstrap'
 import cc from "classcat"
 
-import { Match as MatchModel, Round } from '../../models/itemMock'
+import { Match as MatchModel, Round } from '../../models/types'
 import { TournamentItemModel } from '../../models/TournamentItem'
 import './index.css'
 import Match from './match'
@@ -18,8 +18,14 @@ interface Props extends RouteComponentProps<MatchParams> {
 }
 
 class TournamentDetails extends React.Component<Props> {
-  	public render() {
-		  
+	public componentDidMount() {
+		if (this.props.tournamentItem) {
+			this.props.tournamentItem.fetchRounds(this.props.match.params.topicId)
+		}
+	}
+
+  	public render() {		
+		
     	return (
 			<div  className='tournament-detail'>
 				<Container fluid={true}>

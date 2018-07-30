@@ -1,6 +1,6 @@
-import { types, flow, getEnv } from "mobx-state-tree";
+import { types, flow, getEnv } from "mobx-state-tree"
 
-import { TournamentItemModel } from './TournamentItem';
+import { TournamentItemModel } from './TournamentItem'
 
 export const TournamentListModel = types
     .model({
@@ -12,16 +12,11 @@ export const TournamentListModel = types
             return self.items
         }
     }))
-    .actions(self => ({
-        add(item: typeof TournamentItemModel.Type) {
-            self.items.push(item)
-        },
-        fetchTournaments: flow(function* loadBooks() {
-            console.log('ffafsaaf');
-            
+    .actions(self => ({        
+        fetchTournaments: flow(function* load() {            
             try {                                                                
                 self.loading = true
-                const json = yield getEnv(self).fetch("http://localhost:3004/items")                            
+                const json = yield getEnv(self).fetch("http://localhost:3004/tournaments")                      
                 self.loading = false
                 self.items = json
             } catch (err) {

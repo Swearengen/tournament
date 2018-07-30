@@ -3,7 +3,7 @@ import cc from "classcat"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import { Match as MatchType, Player } from '../../models/itemMock'
+import { Match as MatchType, Player } from '../../models/types'
 import './match.css'
 
 interface Props {

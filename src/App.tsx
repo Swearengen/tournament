@@ -3,7 +3,6 @@ import * as React from 'react'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 
-// import { rounds as mockedRounds } from './models/itemMock'
 import { TournamentListModel } from './models/TournamentList'
 
 import MainContent from './components/mainContent'

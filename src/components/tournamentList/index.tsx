@@ -14,7 +14,6 @@ interface Props extends RouteComponentProps<MatchParams> {
     tournamentListModel: typeof TournamentListModel.Type
 }
 
-@observer
 class TournamentList extends React.Component<Props> {    
 
     public render() {                               
@@ -46,4 +45,4 @@ class TournamentList extends React.Component<Props> {
     }
 }
 
-export default TournamentList
+export default observer(TournamentList)
