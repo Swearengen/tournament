@@ -28,8 +28,8 @@ class MainContent extends React.Component<Props> {
                         {...props} 
                         // @ts-ignore
                         tournamentItem={
-                            tournamentListModel.items.length > 0 ? 
-                            _.find(tournamentListModel.items, (item) => item.id === props.match.params.topicId) :                            
+                            tournamentListModel.tournaments.length > 0 ? 
+                            _.find(tournamentListModel.tournaments, (item) => item.id === props.match.params.topicId) :                            
                             undefined
                         }/>
                     }
