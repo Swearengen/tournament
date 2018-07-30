@@ -17,9 +17,11 @@ const tournamentListModel = TournamentListModel.create(
     }
 )
 
-tournamentListModel.fetchTournaments()
-
 class App extends React.Component {
+	public componentDidMount() {
+		tournamentListModel.fetchTournaments()
+	}
+
 	public render() {
 		
 		return (
