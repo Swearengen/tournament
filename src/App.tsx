@@ -1,36 +1,27 @@
 import * as React from 'react'
+import { Redirect, Switch, Route } from 'react-router-dom'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 
-import { TournamentListModel } from './models/TournamentList'
-
-import MainContent from './components/mainContent'
 import Navigation from './components/shared/navigation'
+
+import TournamentPage from './pages/tournament.page'
+import TournamentsListPage from './pages/tournaments-list.page'
+import About from './components/about'
+
 library.add(faUser)
 
-const fetcher = (url: string) => window.fetch(url).then(response => response.json())
-const tournamentListModel = TournamentListModel.create(	
-	{},
-	{
-        fetch: fetcher
-    }
-)
+const Application = () => (
+	<div className="layout">
+		<Navigation />
+		<Switch>
+			<Redirect path="/" to="/tournaments" exact={true} />
+			<Route path="/tournaments" component={TournamentsListPage} exact={true} />
+			<Route path="/about" component={About} />
+			<Route path="/tournaments/:topicId" component={TournamentPage} exact={true} />
+		</Switch>
+	</div>
+);
 
-class App extends React.Component {
-	public componentDidMount() {
-		tournamentListModel.fetchTournaments()
-	}
-
-	public render() {
-		
-		return (
-			<div className="layout">
-				<Navigation />			
-				<MainContent tournamentListModel={tournamentListModel}/>				
-			</div>
-		);
-	}
-}
-
-export default App
+export default Application

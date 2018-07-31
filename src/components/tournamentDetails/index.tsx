@@ -1,43 +1,36 @@
 import { observer } from "mobx-react"
-import * as React from 'react';
-import { RouteComponentProps } from 'react-router-dom';
+import * as React from 'react'
 import { Col, Container, Row } from 'reactstrap'
 import cc from "classcat"
 
 import { Match as MatchModel, Round } from '../../models/types'
-import { TournamentItemModel } from '../../models/TournamentItem'
 import './index.css'
 import Match from './match'
 
-interface MatchParams {
-  	topicId: string;
-}
 
-interface Props extends RouteComponentProps<MatchParams> {
-	tournamentItem?: typeof TournamentItemModel.Type
+interface Props {
+	selectedTournament: {
+		name: string
+		rounds: Round[]
+	}
 }
 
 class TournamentDetails extends React.Component<Props> {
-	public componentDidMount() {
-		if (this.props.tournamentItem) {
-			this.props.tournamentItem.fetchRounds(this.props.match.params.topicId)
-		}
-	}
 
   	public render() {		
 		
     	return (
 			<div  className='tournament-detail'>
 				<Container fluid={true}>
-					{this.props.tournamentItem && 
-						<h2 className='tournament-detail__main-title'>{this.props.tournamentItem.name}</h2>					
+					{this.props.selectedTournament && 
+						<h2 className='tournament-detail__main-title'>{this.props.selectedTournament.name}</h2>					
 					}
 					<Row>
 						{
-							this.props.tournamentItem && 							
-							this.props.tournamentItem.rounds &&
+							this.props.selectedTournament && 							
+							this.props.selectedTournament.rounds &&
 							
-							this.renderTournamentRounds(this.props.tournamentItem.rounds as Round[])							
+							this.renderTournamentRounds(this.props.selectedTournament.rounds as Round[])							
 						}						
 					</Row>	
 				</Container>
