@@ -10,29 +10,28 @@ export const SelectedTournamentModel = types
 		dateTime: types.optional(types.string, ''),
 		rounds: types.optional(types.frozen(), [])
 	})
-	.actions(self => ({
-		fetchRounds: flow(function* load(tournamentId: string) {
+	.actions(self => {
+		const fetchRounds = flow(function* load(tournamentId: string) {
 			try {
 				self.loading = true
 				const data = yield getEnv(self).fetch(`http://localhost:3004/tournaments/${tournamentId}?_embed=rounds`)
-				// self.setModelData(data)
-
-				self.id = data.id
-				self.name = data.name
-				self.location = data.location
-				self.dateTime = data.dateTime
-				self.rounds = data.rounds
+				setModelData(data)				
 
 				self.loading = false
 			} catch (err) {
 				console.error("Failed to load books ", err)
 			}
-		}),
-		// setModelData({ id, name, location, dateTime, rounds }: ModelData) {
-		// 	self.id = id
-		// 	self.name = name
-		// 	self.location = location
-		// 	self.dateTime = dateTime
-		// 	self.rounds = rounds
-		// }
-	}))
+		});
+
+		function setModelData({ id, name, location, dateTime, rounds }: typeof SelectedTournamentModel.Type) {
+			self.id = id
+			self.name = name
+			self.location = location
+			self.dateTime = dateTime
+			self.rounds = rounds
+		}
+
+		return {
+			fetchRounds
+		}
+	})

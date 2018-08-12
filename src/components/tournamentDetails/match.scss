@@ -51,10 +51,13 @@
     }
 
     &__players-box {
-        width: 190px;
+        width: 200px;
         padding: 5px;   
         display: flex;
         align-items: center;
+        @media (min-width: 992px) and (max-width: 1199.98px) {
+            width: 170px;
+        }
     }
 
     &__player-image {
