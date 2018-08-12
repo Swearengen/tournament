@@ -11,7 +11,7 @@ import Match from './match'
 interface Props {
 	selectedTournament: {
 		name: string
-		rounds: Round[]
+		roundItems: Round[]
 	}
 }
 
@@ -28,9 +28,9 @@ class TournamentDetails extends React.Component<Props> {
 					<Row>
 						{
 							this.props.selectedTournament && 							
-							this.props.selectedTournament.rounds &&
+							this.props.selectedTournament.roundItems &&
 							
-							this.renderTournamentRounds(this.props.selectedTournament.rounds as Round[])							
+							this.renderTournamentRounds(this.props.selectedTournament.roundItems as Round[])							
 						}						
 					</Row>	
 				</Container>

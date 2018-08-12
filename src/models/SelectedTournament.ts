@@ -32,6 +32,12 @@ export const SelectedTournamentModel = types
 		}
 
 		return {
-			fetchRounds
+			fetchRounds,
+			// setWindowWidth
 		}
 	})
+	.views(self => ({
+		get roundItems() {
+			return self.rounds
+		}
+	}))

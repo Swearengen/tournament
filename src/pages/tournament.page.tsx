@@ -9,8 +9,8 @@ import { Round } from '../models/types';
 interface Props extends RouteComponentProps<{ topicId: string }> {
 	selectedTournament: {
 		loading: boolean
-		name: string,
-		rounds: Round[],
+		name: string,		
+		roundItems: Round[]
 		fetchRounds: (topicId: string) => void
 	}
 }
