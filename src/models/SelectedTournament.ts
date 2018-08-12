@@ -1,8 +1,13 @@
-import { types, flow, getEnv } from "mobx-state-tree";
+import { types, flow, getEnv } from "mobx-state-tree"
+
+import { Round } from './types'
+
+
 
 export const SelectedTournamentModel = types
 	.model({
 		loading: types.optional(types.boolean, false),
+		windowWidth: types.number,
 
 		id: types.optional(types.string, ''),
 		name: types.optional(types.string, ''),
@@ -23,6 +28,10 @@ export const SelectedTournamentModel = types
 			}
 		});
 
+		function setWindowWidth(width: number) {
+			self.windowWidth = width
+		}
+
 		function setModelData({ id, name, location, dateTime, rounds }: typeof SelectedTournamentModel.Type) {
 			self.id = id
 			self.name = name
@@ -33,11 +42,25 @@ export const SelectedTournamentModel = types
 
 		return {
 			fetchRounds,
-			// setWindowWidth
+			setWindowWidth
 		}
 	})
 	.views(self => ({
 		get roundItems() {
-			return self.rounds
+			if (self.rounds && self.windowWidth < 767) {
+				return self.rounds.filter((round: Round) => {
+					return round.roundNumber === 1
+				})
+			} else if (self.rounds && self.windowWidth >= 768 && self.windowWidth < 1200) {
+				return self.rounds.filter((round: Round) => {
+					return round.roundNumber === 1 || round.roundNumber === 2
+				})
+			} else {
+				return self.rounds
+					? self.rounds.filter((round: Round) => {
+						return round.roundNumber === 1 || round.roundNumber === 2  || round.roundNumber === 3
+					})
+					: []
+			}
 		}
 	}))

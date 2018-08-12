@@ -5,7 +5,7 @@ const fetcher = (url: string) => window.fetch(url).then(response => response.jso
 
 export const store = {
 	tournamentList: TournamentListModel.create({}, { fetch: fetcher }),
-	selectedTournament: SelectedTournamentModel.create({}, { fetch: fetcher })
+	selectedTournament: SelectedTournamentModel.create({windowWidth: window.screen.width}, { fetch: fetcher })
 }
 
 export default store

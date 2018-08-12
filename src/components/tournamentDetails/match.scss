@@ -32,6 +32,7 @@
 
     &__row {
         position: relative;
+        display: flex;
         border: {
             left: 1px solid #e1e1e1;
             right: 1px solid #e1e1e1;
@@ -48,15 +49,24 @@
             background-color: #639080;
             color: white;
         }
+
+        @media (min-width: 767.98px) {
+            display: inline-flex;
+        }
     }
 
-    &__players-box {
-        width: 200px;
+    &__players-box {        
         padding: 5px;   
         display: flex;
         align-items: center;
+        flex-grow: 10;
         @media (min-width: 992px) and (max-width: 1199.98px) {
             width: 170px;
+        }
+
+        @media (min-width: 767.98px) {
+            width: 200px;
+            flex-grow: 0;
         }
     }
 
@@ -101,6 +111,7 @@
         border-right: 1px solid #e1e1e1;   
         width: 35px;
         justify-content: center;
+        flex-grow: 1;
         
         &:nth-child(2) {
             border-left: 1px solid #e1e1e1;
@@ -108,6 +119,10 @@
 
         &:last-child {
             border-right: none;
+        }
+
+        @media (min-width: 767.98px) {
+            flex-grow: 0;
         }
     }
 }

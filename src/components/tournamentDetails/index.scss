@@ -51,6 +51,12 @@
                     }                            
                 }
             }
+
+            @media (max-width: 767.98px) {
+                .match:first-child::before, .match::after {                     
+                    display: none;
+                }
+            }
         }
 
         &.column-num-2 {
@@ -66,9 +72,17 @@
                 &:first-child {
                     &:before {                                                
                         height: 328px;
-                    }
+                    }                    
+                }
+
+            }
+
+            @media (min-width: 768px) and (max-width: 1199.98px) {
+                .match:first-child::before, .match::after {                     
+                    display: none;
                 }
             }
+
         }
 
         &.column-num-3 {

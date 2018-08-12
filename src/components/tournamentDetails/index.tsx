@@ -21,7 +21,7 @@ class TournamentDetails extends React.Component<Props> {
 		
     	return (
 			<div  className='tournament-detail'>
-				<Container fluid={true}>
+				<Container>
 					{this.props.selectedTournament && 
 						<h2 className='tournament-detail__main-title'>{this.props.selectedTournament.name}</h2>					
 					}
@@ -44,7 +44,7 @@ class TournamentDetails extends React.Component<Props> {
 				<Col key={`Round${round.roundNumber}`}
 					xs={{size: 10, offset: 1}} 
 					md={{size: 6, offset: 0}}
-					lg={{size: 4, offset: 0}}								
+					xl={{size: 4, offset: 0}}								
 				>
 					{round.matches.map((matchPairs: MatchModel[], index) =>
 						<div 

@@ -19,9 +19,7 @@ class Match extends React.Component<Props, {}> {
             <div className='match'>
                 <div className={cc([
                     'match__row',
-                    'bottomless',
-                    'd-inline-flex',
-                    'align-items-stretch',
+                    'bottomless',                    
                     { winner: player1.isWinner }
                 ])}>
                     {this.renderPlayerBox(player1)}
@@ -30,9 +28,7 @@ class Match extends React.Component<Props, {}> {
                 </div>                
 
                 <div className={cc([
-                    'match__row',
-                    'd-inline-flex',
-                    'align-items-stretch',
+                    'match__row',                    
                     { winner: player2.isWinner }
                 ])}>
                     {this.renderPlayerBox(player2)}
