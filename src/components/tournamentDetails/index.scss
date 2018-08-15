@@ -6,6 +6,13 @@
         margin-bottom: 50px;
     }
 
+    &__round-title {
+        text-align: center;
+        font-size: 18px;
+        color: var(--gray);
+        padding-bottom: 35px;
+    }
+
     &__match-pair {
         position: relative;
 

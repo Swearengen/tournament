@@ -46,19 +46,22 @@ class TournamentDetails extends React.Component<Props> {
 					md={{size: 6, offset: 0}}
 					xl={{size: 4, offset: 0}}								
 				>
-					{round.matches.map((matchPairs: MatchModel[], index) =>
-						<div 
-							key={`MatchPair${round.roundNumber}-${index}`}
-							className={cc([
-								'tournament-detail__match-pair',
-								`column-num-${j+1}`
-							])}
-						>
-							{matchPairs.map((matchItem: MatchModel, i) =>
-								<Match key={`Match${round.roundNumber}-${index}-${i}`} match={matchItem} />
-							)}
-						</div>
-					)}								
+					<h3 className='tournament-detail__round-title'>{round.roundName}</h3>
+					<div>
+						{round.matches.map((matchPairs: MatchModel[], index) =>
+							<div 
+								key={`MatchPair${round.roundNumber}-${index}`}
+								className={cc([
+									'tournament-detail__match-pair',
+									`column-num-${j+1}`
+								])}
+							>
+								{matchPairs.map((matchItem: MatchModel, i) =>
+									<Match key={`Match${round.roundNumber}-${index}-${i}`} match={matchItem} />
+								)}
+							</div>
+						)}								
+					</div>
 				</Col>
 			)			
 		)

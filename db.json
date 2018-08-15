@@ -13,6 +13,7 @@
             "id": "1",
             "tournamentId": "1",
             "roundNumber": 1,
+            "roundName": "Round 1",
             "matches": [
                 [
     
@@ -303,6 +304,7 @@
             "id": 2,
             "tournamentId": "1",
             "roundNumber" : 2,
+            "roundName": "quarter final", 
             "matches" : [
                 [
                     {
@@ -454,6 +456,7 @@
             "id": "3",
             "tournamentId": "1",
             "roundNumber" : 3,
+            "roundName": "semi final",
             "matches" : [
                 [
                     {
@@ -493,6 +496,52 @@
                     }
                 ],
     
+                [
+                    {
+                        "player1" : {
+                            "name" : "Rafael Nadal",
+                            "ranking" : 1,
+                            "playerImg" : "http://via.placeholder.com/50x50" ,
+                            "isWinner" : true,
+                            "sets" : [
+                                {
+                                    "score" : "7",
+                                    "tieBreakScore" : "7"
+                                },
+                                {
+                                    "score" : "4"                                
+                                },
+                                {
+                                    "score" : "10"                                                               
+                                }
+                            ]
+                        },
+                        "player2" : {
+                            "name" : "Lord Gulbis",                                                                                                
+                            "sets" : [
+                                {
+                                    "score" : "6",
+                                    "tieBreakScore" : "5"
+                                },
+                                {
+                                    "score" : "6"
+                                },
+                                {
+                                    "score" : "8"                                                                   
+                                }
+                            ]
+                        }
+                    }
+                ]
+            ]
+        },
+
+        {
+            "id": "4",
+            "tournamentId": "1",
+            "roundNumber" : 4,
+            "roundName": "final",
+            "matches" : [
                 [
                     {
                         "player1" : {

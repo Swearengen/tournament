@@ -2,8 +2,6 @@ import { types, flow, getEnv } from "mobx-state-tree"
 
 import { Round } from './types'
 
-
-
 export const SelectedTournamentModel = types
 	.model({
 		loading: types.optional(types.boolean, false),

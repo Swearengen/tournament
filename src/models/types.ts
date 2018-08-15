@@ -1,5 +1,6 @@
 export interface Round {
     roundNumber: number;
+    roundName: string;
     matches: Match[][];
 }
 
