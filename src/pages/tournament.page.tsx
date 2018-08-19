@@ -5,13 +5,14 @@ import { RouteComponentProps } from 'react-router-dom'
 import * as _ from 'lodash'
 
 import TournamentDetails from '../components/tournamentDetails'
-import { Round } from '../models/types';
+import { Round, RoundSchemaItem } from '../models/types';
 
 interface Props extends RouteComponentProps<{ topicId: string }> {
 	selectedTournament: {
 		loading: boolean
-		name: string,		
+		name: string
 		roundItems: Round[]
+		roundsSchemaItems: RoundSchemaItem[];
 		fetchRounds: (topicId: string) => void
 		setWindowWidth: (width: number) => void
 	}
@@ -20,13 +21,14 @@ interface Props extends RouteComponentProps<{ topicId: string }> {
 export default inject('selectedTournament')(observer(
 	class TournamentPage extends Component<Props> {
 		private onResize = _.debounce(() => {			
-			this.props.selectedTournament.setWindowWidth(window.screen.width)
+			this.props.selectedTournament.setWindowWidth(window.innerWidth)
 		}, 350);
 
-		public componentDidMount() {
+		public componentDidMount() {						
 			const { topicId } = this.props.match.params
-			window.addEventListener("resize", this.onResize);
+			window.addEventListener("resize", this.onResize)
 			this.props.selectedTournament.fetchRounds(topicId)
+			this.props.selectedTournament.setWindowWidth(window.innerWidth)
 		}
 
 		public componentWillUnmount() {

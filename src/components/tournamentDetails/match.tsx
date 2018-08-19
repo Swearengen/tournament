@@ -10,36 +10,11 @@ interface Props {
     match: MatchType
 }
 
-class Match extends React.Component<Props, {}> {    
+export const Match: React.SFC<Props> = (props) => {
 
-	public render () {    
-        const { player1, player2 } = this.props.match    
+    const { player1, player2 } = props.match    
 
-        return (
-            <div className='match'>
-                <div className={cc([
-                    'match__row',
-                    'bottomless',                    
-                    { winner: player1.isWinner }
-                ])}>
-                    {this.renderPlayerBox(player1)}
-
-                    {this.renderPlayerSets(player1)}
-                </div>                
-
-                <div className={cc([
-                    'match__row',                    
-                    { winner: player2.isWinner }
-                ])}>
-                    {this.renderPlayerBox(player2)}
-
-                    {this.renderPlayerSets(player2)}
-                </div>                
-            </div>
-        )
-    }
-
-    private renderPlayerBox(player: Player) {
+    const renderPlayerBox = (player: Player) => {
         return (
             <div className='match__players-box'>
                 {player.playerImg ? (
@@ -59,7 +34,7 @@ class Match extends React.Component<Props, {}> {
         )
     }
 
-    private renderPlayerSets(player: Player) {
+    const renderPlayerSets = (player: Player) => {
         return (
             player.sets.map((set, index) =>
                 <div key={`${player.name}-set${index}`} className='match__score-box'>                            
@@ -72,7 +47,30 @@ class Match extends React.Component<Props, {}> {
                 </div>
             )
         )
-    }
+    }   
+
+    return (
+        <div className='match'>
+            <div className={cc([
+                'match__row',
+                'bottomless',                    
+                { winner: player1.isWinner }
+            ])}>
+                {renderPlayerBox(player1)}
+
+                {renderPlayerSets(player1)}
+            </div>                
+
+            <div className={cc([
+                'match__row',                    
+                { winner: player2.isWinner }
+            ])}>
+                {renderPlayerBox(player2)}
+
+                {renderPlayerSets(player2)}
+            </div>                
+        </div>
+    )
 }
 
 export default Match

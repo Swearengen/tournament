@@ -1,0 +1,37 @@
+.rounds-schema {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+
+    &__round-title {
+        text-align: center;
+        font-size: 18px;
+        color: var(--gray);
+        margin-bottom: 15px;
+    }
+
+    &__item-cont {
+        flex-grow: 1;
+    }
+
+    &__item {
+        list-style: none;
+        padding: 0;
+        background-color: #d2d2d2;
+        height: 200px;
+        display: flex;        
+        margin: 0 15px;
+        padding: 10px 20px;
+        flex-direction: column;
+        justify-content: space-around;
+
+        &.selected {
+            background-color: var(--tournament-green);
+        }
+        
+        li {
+            border-bottom: 2px solid white;
+            border-radius: 2px;            
+        }
+    }
+}

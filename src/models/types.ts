@@ -21,3 +21,10 @@ export interface Set {
     score: string;    
     tieBreakScore?: string;
 }
+
+export interface RoundSchemaItem {
+    matchesNumber: number;
+    roundName: string;
+    roundNumber: number;
+    selected: boolean;
+}

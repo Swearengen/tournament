@@ -1,6 +1,6 @@
 import { types, flow, getEnv } from "mobx-state-tree"
 
-import { Round } from './types'
+import { Round, RoundSchemaItem } from './types'
 
 export const SelectedTournamentModel = types
 	.model({
@@ -11,7 +11,7 @@ export const SelectedTournamentModel = types
 		name: types.optional(types.string, ''),
 		location: types.optional(types.string, ''),
 		dateTime: types.optional(types.string, ''),
-		rounds: types.optional(types.frozen(), [])
+		rounds: types.optional(types.frozen(), []),
 	})
 	.actions(self => {
 		const fetchRounds = flow(function* load(tournamentId: string) {
@@ -26,7 +26,7 @@ export const SelectedTournamentModel = types
 			}
 		});
 
-		function setWindowWidth(width: number) {
+		function setWindowWidth(width: number) {						
 			self.windowWidth = width
 		}
 
@@ -45,20 +45,46 @@ export const SelectedTournamentModel = types
 	})
 	.views(self => ({
 		get roundItems() {
-			if (self.rounds && self.windowWidth < 767) {
+			if (self.rounds && self.windowWidth < 767) {								
 				return self.rounds.filter((round: Round) => {
 					return round.roundNumber === 1
 				})
-			} else if (self.rounds && self.windowWidth >= 768 && self.windowWidth < 1200) {
+			} else if (self.rounds && self.windowWidth >= 768 && self.windowWidth < 1200) {								
 				return self.rounds.filter((round: Round) => {
 					return round.roundNumber === 1 || round.roundNumber === 2
 				})
-			} else {
+			} else {								
 				return self.rounds
 					? self.rounds.filter((round: Round) => {
 						return round.roundNumber === 1 || round.roundNumber === 2  || round.roundNumber === 3
 					})
 					: []
 			}
+		},
+
+		get roundsSchemaItems():RoundSchemaItem[]  {
+			return [
+				{
+					roundName: 'round 1',
+					roundNumber: 1,
+					matchesNumber: 8,
+					selected: true,
+				}, {					
+					roundName: 'quarter final',
+					roundNumber: 2,
+					matchesNumber: 4,
+					selected: false,
+				}, {
+					roundName: 'semi final',
+					roundNumber: 3,
+					matchesNumber: 2,
+					selected: false,
+				}, {
+					roundName: 'Finale',
+					roundNumber: 4,
+					matchesNumber: 1,
+					selected: false,
+				}
+			]
 		}
 	}))

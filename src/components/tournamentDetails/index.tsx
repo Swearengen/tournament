@@ -3,42 +3,23 @@ import * as React from 'react'
 import { Col, Container, Row } from 'reactstrap'
 import cc from "classcat"
 
-import { Match as MatchModel, Round } from '../../models/types'
+import { Match as MatchModel, Round, RoundSchemaItem } from '../../models/types'
 import './index.css'
 import Match from './match'
+import { RoundsSchema } from './rounds-schema'
 
 
 interface Props {
 	selectedTournament: {
-		name: string
-		roundItems: Round[]
+		name: string;
+		roundItems: Round[];
+		roundsSchemaItems: RoundSchemaItem[];
 	}
 }
 
-class TournamentDetails extends React.Component<Props> {
+export const TournamentDetails: React.SFC<Props> = (props) => {
 
-  	public render() {		
-		
-    	return (
-			<div  className='tournament-detail'>
-				<Container>
-					{this.props.selectedTournament && 
-						<h2 className='tournament-detail__main-title'>{this.props.selectedTournament.name}</h2>					
-					}
-					<Row>
-						{
-							this.props.selectedTournament && 							
-							this.props.selectedTournament.roundItems &&
-							
-							this.renderTournamentRounds(this.props.selectedTournament.roundItems as Round[])							
-						}						
-					</Row>	
-				</Container>
-			</div>
-    	)
-	}
-
-	private renderTournamentRounds(rounds: Round[]) {
+	const renderTournamentRounds = (rounds: Round[]) => {
 		return (
 			rounds.map((round: Round, j: number) =>							
 				<Col key={`Round${round.roundNumber}`}
@@ -66,6 +47,25 @@ class TournamentDetails extends React.Component<Props> {
 			)			
 		)
 	}
+
+	return (
+		<div  className='tournament-detail'>
+			<Container>
+				{props.selectedTournament && 
+					<h2 className='tournament-detail__main-title'>{props.selectedTournament.name}</h2>					
+				}
+				<RoundsSchema rounds={props.selectedTournament.roundsSchemaItems} />
+				<Row>
+					{
+						props.selectedTournament && 							
+						props.selectedTournament.roundItems &&
+						
+						renderTournamentRounds(props.selectedTournament.roundItems)							
+					}						
+				</Row>	
+			</Container>
+		</div>
+	)
 }
 
 export default observer(TournamentDetails)
