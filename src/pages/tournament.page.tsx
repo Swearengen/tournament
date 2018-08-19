@@ -14,21 +14,22 @@ interface Props extends RouteComponentProps<{ topicId: string }> {
 		roundItems: Round[]
 		roundsSchemaItems: RoundSchemaItem[];
 		fetchRounds: (topicId: string) => void
-		setWindowWidth: (width: number) => void
+		setColumnsToShow: (width: number) => void
+		setSelectedRound: (roundNum: number) => void
 	}
 }
 
 export default inject('selectedTournament')(observer(
 	class TournamentPage extends Component<Props> {
 		private onResize = _.debounce(() => {			
-			this.props.selectedTournament.setWindowWidth(window.innerWidth)
+			this.props.selectedTournament.setColumnsToShow(window.innerWidth)
 		}, 350);
 
 		public componentDidMount() {						
 			const { topicId } = this.props.match.params
 			window.addEventListener("resize", this.onResize)
 			this.props.selectedTournament.fetchRounds(topicId)
-			this.props.selectedTournament.setWindowWidth(window.innerWidth)
+			this.props.selectedTournament.setColumnsToShow(window.innerWidth)
 		}
 
 		public componentWillUnmount() {

@@ -14,6 +14,7 @@ interface Props {
 		name: string;
 		roundItems: Round[];
 		roundsSchemaItems: RoundSchemaItem[];
+		setSelectedRound: (roundNum: number) => void
 	}
 }
 
@@ -54,7 +55,10 @@ export const TournamentDetails: React.SFC<Props> = (props) => {
 				{props.selectedTournament && 
 					<h2 className='tournament-detail__main-title'>{props.selectedTournament.name}</h2>					
 				}
-				<RoundsSchema rounds={props.selectedTournament.roundsSchemaItems} />
+				<RoundsSchema 
+					rounds={props.selectedTournament.roundsSchemaItems} 
+					setSelectedRound={props.selectedTournament.setSelectedRound}
+				/>
 				<Row>
 					{
 						props.selectedTournament && 							

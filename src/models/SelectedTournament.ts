@@ -4,8 +4,9 @@ import { Round, RoundSchemaItem } from './types'
 
 export const SelectedTournamentModel = types
 	.model({
-		loading: types.optional(types.boolean, false),
-		windowWidth: types.number,
+		loading: types.optional(types.boolean, false),		
+		selectedRound: types.optional(types.number, 1),
+		columnsToShow: types.optional(types.number, 3),
 
 		id: types.optional(types.string, ''),
 		name: types.optional(types.string, ''),
@@ -26,8 +27,14 @@ export const SelectedTournamentModel = types
 			}
 		});
 
-		function setWindowWidth(width: number) {						
-			self.windowWidth = width
+		function setColumnsToShow(width: number) {									
+			if (width < 767) {
+				self.columnsToShow = 1
+			} else if (width >= 768 && width < 1200) {
+				self.columnsToShow = 2
+			} else {
+				self.columnsToShow = 3
+			}
 		}
 
 		function setModelData({ id, name, location, dateTime, rounds }: typeof SelectedTournamentModel.Type) {
@@ -38,31 +45,42 @@ export const SelectedTournamentModel = types
 			self.rounds = rounds
 		}
 
+		function setSelectedRound(roundNum: number) {
+			self.selectedRound = roundNum
+		}
+
 		return {
 			fetchRounds,
-			setWindowWidth
+			setColumnsToShow,
+			setSelectedRound
 		}
 	})
 	.views(self => ({
 		get roundItems() {
-			if (self.rounds && self.windowWidth < 767) {								
+			if (self.rounds && self.columnsToShow === 1) {
 				return self.rounds.filter((round: Round) => {
-					return round.roundNumber === 1
+					return round.roundNumber === self.selectedRound
 				})
-			} else if (self.rounds && self.windowWidth >= 768 && self.windowWidth < 1200) {								
-				return self.rounds.filter((round: Round) => {
-					return round.roundNumber === 1 || round.roundNumber === 2
-				})
-			} else {								
-				return self.rounds
-					? self.rounds.filter((round: Round) => {
-						return round.roundNumber === 1 || round.roundNumber === 2  || round.roundNumber === 3
+			} 
+
+			if (self.rounds) {
+				if (self.rounds.length - (self.selectedRound - 1) >= self.columnsToShow) {					
+					// case when it is not last n columns
+					// so I can take roundNumber === selectedCoumn i jos slectedColumn + 1 or selectedColumn + 2 
+					return self.rounds.filter((round: Round) => {						
+						return round.roundNumber === 1 || round.roundNumber === 2 || round.roundNumber || 3
 					})
-					: []
+				} else {
+					// u zadnjih columnsToShow roundi se nalazim i treba uzet tih zadnjih columnsToShow roundi
+				}
 			}
+
+			return []			
 		},
 
 		get roundsSchemaItems():RoundSchemaItem[]  {
+
+			// todo: compute round schema items
 			return [
 				{
 					roundName: 'round 1',
