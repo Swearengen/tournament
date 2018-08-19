@@ -1,6 +1,6 @@
 import { types, flow, getEnv } from "mobx-state-tree"
 
-import { Round, RoundSchemaItem } from './types'
+import { RoundSchemaItem } from './types'
 
 export const SelectedTournamentModel = types
 	.model({
@@ -58,24 +58,16 @@ export const SelectedTournamentModel = types
 	.views(self => ({
 		get roundItems() {
 			if (self.rounds && self.columnsToShow === 1) {
-				return self.rounds.filter((round: Round) => {
-					return round.roundNumber === self.selectedRound
-				})
+				return self.rounds.slice(self.selectedRound - 1, self.selectedRound)				
 			} 
 
 			if (self.rounds) {
-				if (self.rounds.length - (self.selectedRound - 1) >= self.columnsToShow) {					
-					// case when it is not last n columns
-					// so I can take roundNumber === selectedCoumn i jos slectedColumn + 1 or selectedColumn + 2 
-					return self.rounds.filter((round: Round) => {						
-						return round.roundNumber === 1 || round.roundNumber === 2 || round.roundNumber || 3
-					})
+				if (self.rounds.length - (self.selectedRound - 1) >= self.columnsToShow) {															
+					return self.rounds.slice(self.selectedRound - 1, self.selectedRound + self.columnsToShow - 1)
 				} else {
-					// u zadnjih columnsToShow roundi se nalazim i treba uzet tih zadnjih columnsToShow roundi
+					return self.rounds.slice(-self.columnsToShow)					
 				}
-			}
-
-			return []			
+			}			
 		},
 
 		get roundsSchemaItems():RoundSchemaItem[]  {
