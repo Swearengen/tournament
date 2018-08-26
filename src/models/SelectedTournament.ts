@@ -1,6 +1,7 @@
 import { types, flow, getEnv } from "mobx-state-tree"
+import * as _ from 'lodash'
 
-import { RoundSchemaItem } from './types'
+import { RoundSchemaItem, Round } from './types'
 
 export const SelectedTournamentModel = types
 	.model({
@@ -70,31 +71,15 @@ export const SelectedTournamentModel = types
 			}			
 		},
 
-		get roundsSchemaItems():RoundSchemaItem[]  {
+		get roundsSchemaItems():RoundSchemaItem[] {			
 
-			// todo: compute round schema items
-			return [
-				{
-					roundName: 'round 1',
-					roundNumber: 1,
-					matchesNumber: 8,
-					selected: true,
-				}, {					
-					roundName: 'quarter final',
-					roundNumber: 2,
-					matchesNumber: 4,
-					selected: false,
-				}, {
-					roundName: 'semi final',
-					roundNumber: 3,
-					matchesNumber: 2,
-					selected: false,
-				}, {
-					roundName: 'Finale',
-					roundNumber: 4,
-					matchesNumber: 1,
-					selected: false,
+			return self.rounds!.map((round: Round) => {
+				return {
+					roundName: round.roundName,
+					roundNumber: round.roundNumber,
+					matchesNumber: _.flatten(round.matches).length,
+					selected: round.roundNumber === self.selectedRound
 				}
-			]
+			})
 		}
 	}))

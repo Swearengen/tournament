@@ -39,9 +39,12 @@ export const RoundsSchema: React.SFC<Props> = (props) => {
                         ])}
                         onClick={() => onRoundClick(item.roundNumber, item.selected)}
                     >                        
-                        {renderMatchLines(item.matchesNumber).map((i: {element:string, key: string}) => 
-                            React.createElement(i.element, {key: i.key})
-                        )}                        
+                        {renderMatchLines(item.matchesNumber).map((i: {element:string, key: string}) => {
+                            if (+i.key >= 10) {
+                                return false
+                            } 
+                            return React.createElement(i.element, {key: i.key})                                                        
+                        })}                        
                     </ul>
                 </div>                
             )}                    
