@@ -13,9 +13,9 @@ interface Props {
 
 export const RoundsSchema: React.SFC<Props> = (props) => {    
     const renderMatchLines = (matchesNum: number) => {
-        const array = [] as Array<{element:string, key: string}>;
+        const array = [] as Array<{element:string, key: number}>;
         for (let index = 0; index < matchesNum; index++) {                        
-            array.push({element: 'li', key: String(index)});
+            array.push({element: 'li', key: index});
         }
 
         return array;
@@ -39,8 +39,8 @@ export const RoundsSchema: React.SFC<Props> = (props) => {
                         ])}
                         onClick={() => onRoundClick(item.roundNumber, item.selected)}
                     >                        
-                        {renderMatchLines(item.matchesNumber).map((i: {element:string, key: string}) => {
-                            if (+i.key >= 10) {
+                        {renderMatchLines(item.matchesNumber).map((i: {element:string, key: number}) => {
+                            if (i.key >= 10) {
                                 return false
                             } 
                             return React.createElement(i.element, {key: i.key})                                                        
