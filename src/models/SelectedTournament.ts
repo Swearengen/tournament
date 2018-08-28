@@ -72,7 +72,6 @@ export const SelectedTournamentModel = types
 		},
 
 		get roundsSchemaItems():RoundSchemaItem[] {			
-
 			return self.rounds!.map((round: Round) => {
 				return {
 					roundName: round.roundName,
