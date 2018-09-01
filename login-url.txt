@@ -1,0 +1,1 @@
+https://tournaments-app.auth.us-east-2.amazoncognito.com//login?client_id=6mauev1d5t86kigc6620phan55&redirect_uri=http://localhost:3000/tournaments/1&response_type=code
