@@ -1,7 +1,8 @@
 import * as React from 'react'
 import { Component } from 'react'
 import { inject, observer } from 'mobx-react'
-import { Link, RouteComponentProps } from 'react-router-dom';
+import { Link, RouteComponentProps } from 'react-router-dom'
+import { API } from "aws-amplify"
 
 interface Props extends RouteComponentProps<{ topicId: string }> {
 	tournamentList: {
@@ -15,6 +16,15 @@ export default inject('tournamentList')(observer(
 	class TournamentsListPage extends Component<Props> {
 		public componentDidMount () {
 			this.props.tournamentList.fetchTournaments()
+
+			const test = API.get('tournament', '/tournamentsList', null)
+			test.then(res => {
+				console.log(res, 'res');				
+			}).catch(err => {
+				console.log(err, 'ccc');
+				
+			})
+			
 		}
 
 		public render() {
