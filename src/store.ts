@@ -1,11 +1,12 @@
 import { TournamentListModel } from './models/TournamentList'
 import { SelectedTournamentModel } from './models/SelectedTournament'
+import { API } from "aws-amplify"
 
-const fetcher = (url: string) => window.fetch(url).then(response => response.json())
+const fetcher = () => API
 
 export const store = {
-	tournamentList: TournamentListModel.create({}, { fetch: fetcher }),
-	selectedTournament: SelectedTournamentModel.create({}, { fetch: fetcher })
+	tournamentList: TournamentListModel.create({}, { fetcher }),
+	selectedTournament: SelectedTournamentModel.create({}, { fetcher })
 }
 
 export default store

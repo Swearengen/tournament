@@ -16,11 +16,11 @@ import './index.css'
 
 Amplify.configure({
 	Auth: {
-	  mandatorySignIn: false,
-	  region: config.cognito.REGION,
-	  userPoolId: config.cognito.USER_POOL_ID,
+	  	mandatorySignIn: false,
+	  	region: config.cognito.REGION,
+	  	userPoolId: config.cognito.USER_POOL_ID,
 	//   identityPoolId: config.cognito.IDENTITY_POOL_ID,
-	  userPoolWebClientId: config.cognito.APP_CLIENT_ID
+	  	userPoolWebClientId: config.cognito.APP_CLIENT_ID
 	},
 	// Storage: {
 	//   region: config.s3.REGION,
@@ -28,15 +28,15 @@ Amplify.configure({
 	//   identityPoolId: config.cognito.IDENTITY_POOL_ID
 	// },
 	API: {
-	  endpoints: [
-		{
-		  name: "tournament",
-		  endpoint: config.apiGateway.URL,
-		  region: config.apiGateway.REGION
-		},
-	  ]
+	  	endpoints: [
+			{
+				name: "tournament",
+				endpoint: config.apiGateway.URL,
+				region: config.apiGateway.REGION
+			},
+	  	]
 	}
-  })
+})
 
 ReactDOM.render(
 	<Provider {...store}>

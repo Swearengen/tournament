@@ -73,11 +73,8 @@ class RoundsSchema extends React.Component<Props, State> {
 
     private getSelectedRoundName = () => {
         if (!_.isEmpty(this.props.rounds)) {
-            const selectedRound = _.find(this.props.rounds, 'selected')
-            console.log(selectedRound, this.props.rounds);
-            return selectedRound ? selectedRound.roundName : undefined
-            
-            // return 'fdsds'
+            const selectedRound = _.find(this.props.rounds, 'selected')            
+            return selectedRound ? selectedRound.roundName : undefined                        
         }
         
         return undefined

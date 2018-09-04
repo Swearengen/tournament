@@ -16,10 +16,11 @@ export const SelectedTournamentModel = types
 		rounds: types.optional(types.frozen(), []),
 	})
 	.actions(self => {
-		const fetchRounds = flow(function* load(tournamentId: string) {
+		const fetchRounds = flow(function* load(resource: string, url: string, params: any = {}) {						
 			try {
-				self.loading = true
-				const data = yield getEnv(self).fetch(`http://localhost:3004/tournaments/${tournamentId}?_embed=rounds`)
+				self.loading = true				
+				const data = yield getEnv(self).fetcher().get(resource, url)				
+				
 				setModelData(data)				
 
 				self.loading = false

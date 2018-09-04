@@ -1,30 +1,20 @@
 import * as React from 'react'
 import { Component } from 'react'
 import { inject, observer } from 'mobx-react'
-import { Link, RouteComponentProps } from 'react-router-dom'
-import { API } from "aws-amplify"
+import { Link } from 'react-router-dom'
 
-interface Props extends RouteComponentProps<{ topicId: string }> {
+interface Props {
 	tournamentList: {
 		loading: boolean
 		tournamentItems: Array<{ id: string, name: string }>
-		fetchTournaments: () => void
+		fetchTournaments: (resource: string, url: string) => void
 	}
 }
 
 export default inject('tournamentList')(observer(
 	class TournamentsListPage extends Component<Props> {
 		public componentDidMount () {
-			this.props.tournamentList.fetchTournaments()
-
-			const test = API.get('tournament', '/tournamentsList', null)
-			test.then(res => {
-				console.log(res, 'res');				
-			}).catch(err => {
-				console.log(err, 'ccc');
-				
-			})
-			
+			this.props.tournamentList.fetchTournaments('tournament', '/tournamentsList')			
 		}
 
 		public render() {

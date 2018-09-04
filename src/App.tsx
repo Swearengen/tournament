@@ -19,7 +19,7 @@ const Application = () => (
 			<Redirect path="/" to="/tournaments" exact={true} />
 			<Route path="/tournaments" component={TournamentsListPage} exact={true} />
 			<Route path="/about" component={About} />
-			<Route path="/tournaments/:topicId" component={TournamentPage} exact={true} />
+			<Route path="/tournaments/:tournamentId" component={TournamentPage} exact={true} />
 		</Switch>
 	</div>
 );

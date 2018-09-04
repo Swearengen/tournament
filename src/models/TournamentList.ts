@@ -19,14 +19,15 @@ export const TournamentListModel = types
 		}
 	}))
 	.actions(self => ({
-		fetchTournaments: flow(function* load() {
+		fetchTournaments: flow(function* load(resource: string, url: string, params: any = {}) {
 			try {
 				self.loading = true
-				const items = yield getEnv(self).fetch("http://localhost:3004/tournaments")
+				const items = yield getEnv(self).fetcher().get(resource, url, params)								
 				self.loading = false
 				self.tournaments = items
 			} catch (err) {
 				console.error("Failed to load books ", err)
+				throw err
 			}
 		}),
 	}))
