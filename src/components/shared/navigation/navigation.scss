@@ -9,12 +9,26 @@
 }
 
 .navbar {
-    .navbar-brand {
-        width: 60px;
+    .navbar-brand {        
         height: 60px;
         background-image: url(../../../assets/logo.png);
-        background-size: cover; 
+        background-size: contain;
+        background-repeat: no-repeat;
         padding-top: 0;
         padding-bottom: 0;  
+        padding-left: 65px; 
+        
+        h2 {
+            font-weight: bold;
+            font-size: 15px;
+            margin-top: 10px;
+            margin-bottom: 2px;
+            font-family: sans-serif;
+        }
+
+        p {
+            margin-bottom: 0;
+            font-size: 12px;
+        }
     }
 }
