@@ -8,7 +8,6 @@ import Navigation from './components/shared/navigation'
 
 import TournamentPage from './pages/tournament.page'
 import TournamentsListPage from './pages/tournaments-list.page'
-import About from './components/about'
 
 library.add(faUser)
 
@@ -17,8 +16,7 @@ const Application = () => (
 		<Navigation />
 		<Switch>
 			<Redirect path="/" to="/tournaments" exact={true} />
-			<Route path="/tournaments" component={TournamentsListPage} exact={true} />
-			<Route path="/about" component={About} />
+			<Route path="/tournaments" component={TournamentsListPage} exact={true} />			
 			<Route path="/tournaments/:tournamentId" component={TournamentPage} exact={true} />
 		</Switch>
 	</div>

@@ -1,0 +1,36 @@
+.tournaments-list {
+
+    &__title {
+        font-weight: bold;
+        margin: 50px 0 25px;
+    }
+
+    .tournaments-list__collapse-button {
+        width: 100%;
+        text-align: left;
+        background-color: #f8f9fa;
+        color: black;
+        border-color: #f8f9fa;
+        cursor: pointer;
+
+        &:focus {
+            box-shadow: none;
+        }
+    }
+
+    &__collapse-cont {
+        margin-bottom: 20px;
+    }
+
+    &__list {
+        margin-top: 15px;
+    }
+
+    &__item a  {
+        color: #212529;
+
+        &:active, &:focus, &:hover {
+            color: #212529
+        }
+    }
+}

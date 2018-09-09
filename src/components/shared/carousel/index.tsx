@@ -7,6 +7,7 @@ import {
 	CarouselControl,
 	CarouselIndicators,
 	CarouselItem,
+	Button,
 } from 'reactstrap';
 
 import './carousel.css'
@@ -17,16 +18,12 @@ import carouselImage2 from '../../../assets/header2.jpg';
 
 const items = [
   	{
-		altText: 'Slide 1',
-    	caption: 'Slide 1',
-    	header: 'Slide 1 Header',
+    	caption: 'Summer Fareell 2018, Chromos',
 		src: carouselImage1,
-		href: '/about'
+		href: '/tournaments/1'
   	},
-  	{
-    	altText: 'Slide 3',
-    	caption: 'Slide 3',
-    	header: 'Slide 3 Header',
+  	{    	
+    	caption: 'Slide 3',    	
     	src: carouselImage2
   	}
 ];
@@ -54,13 +51,16 @@ class CarouselElement extends React.Component<{}, State> {
 				>	
 					{item.href ? (
 						<Link to={item.href}>                            
-							<img src={item.src} alt={item.altText} />
-							<CarouselCaption captionText={item.caption} captionHeader={item.caption} />
+							<div>
+								<img src={item.src} />
+								<Button className="carousel-link" outline={true}>See more</Button>
+							</div>
+							<CarouselCaption captionText={item.caption} />
 						</Link>
 					) : (						
 						<div>
-							<img src={item.src} alt={item.altText} />
-							<CarouselCaption captionText={item.caption} captionHeader={item.caption} />
+							<img src={item.src} />
+							<CarouselCaption captionText={item.caption} />
 						</div>
 					)}
 				</CarouselItem>

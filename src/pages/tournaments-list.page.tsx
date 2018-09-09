@@ -1,12 +1,13 @@
 import * as React from 'react'
 import { Component } from 'react'
 import { inject, observer } from 'mobx-react'
-import { Link } from 'react-router-dom'
+import TournamentList from '../components/tournamentList';
+
 
 interface Props {
 	tournamentList: {
 		loading: boolean
-		tournamentItems: Array<{ id: string, name: string }>
+		tournamentItems: Array<{ id: string, name: string, location: string, dateTime: string }>
 		fetchTournaments: (resource: string, url: string) => void
 	}
 }
@@ -25,13 +26,7 @@ export default inject('tournamentList')(observer(
 			}
 
 			return (
-				<ul>
-					{tournamentItems.map(item => (
-						<li key={item.id}>
-							<Link to={`/tournaments/${item.id}`}>{item.name}</Link>
-						</li>
-					))}
-				</ul>
+				<TournamentList tournamentItems={tournamentItems} />
 			)
 		}
 	}

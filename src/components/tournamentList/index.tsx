@@ -1,48 +1,66 @@
 import * as React from 'react'
-import { observer } from 'mobx-react';
 
-import { Link, RouteComponentProps } from 'react-router-dom'
-
-import { TournamentListModel } from '../../models/TournamentList'
 import Carousel from '../shared/carousel'
+import { Container, Row, Col, Button, Collapse } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
-interface MatchParams {
-    name: string;
+import './index.css'
+
+interface Props {
+    tournamentItems: Array<{ id: string, name: string, location: string, dateTime: string }>
 }
 
-interface Props extends RouteComponentProps<MatchParams> {
-    tournamentListModel: typeof TournamentListModel.Type
+interface State {
+    collapse: boolean;
 }
 
-class TournamentList extends React.Component<Props> {    
+class TournamentList extends React.Component<Props, State> {    
 
-    public render() {                               
+    public state: State = {
+        collapse: true,
+    }
+
+    public render() {                                   
         return (
-            <div>
-                <Carousel />
-                <h2>Topics</h2>
-                <ul>
-                    {this.props.tournamentListModel.tournamentItems.map((item) => (
-                        <li key={`nav-item-${item.id}`}>
-                            <Link to={`${this.rootPath()}/${item.id}`}>
-                                {item.name}
-                            </Link>
-                        </li>                    
-                    ))}                    
-                </ul>            
+            <div className="tournaments-list">
+				<Carousel />
+                <Container>
+                    <h2 className="tournaments-list__title">TOURNAMENTS</h2>
+                    <Row>
+                        <Col md="8">
+                            <div className="tournaments-list__collapse-cont">
+                                <Button className="tournaments-list__collapse-button" onClick={this.toggle}>2018</Button>
+                                <Collapse isOpen={this.state.collapse}>
+                                    <ul className="tournaments-list__list">
+                                        {this.props.tournamentItems.map(item => (
+                                            <li className="tournaments-list__item" key={item.id}>
+                                                <Link to={`/tournaments/${item.id}`}>{item.name} / {item.location} / {this.formatDate(item.dateTime)}</Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </Collapse>
+                            </div>                            
+                        </Col>
+                        <Col md="4">
+                            <h3>About</h3>
+                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English</p>                            
+                        </Col>							
+                    </Row>
+                </Container>
+                
             </div>
-        );
+        )
     }
 
-    private rootPath() {
-        const { match } = this.props;
+    private formatDate(dateString: string) {
+        const date = new Date(dateString);
 
-        if (match.url === '/') {
-            return '/tournaments'
-        }
+        return `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`
+    }
 
-        return match.url
+    private toggle = () => {
+        this.setState({ collapse: !this.state.collapse });
     }
 }
 
-export default observer(TournamentList)
+export default TournamentList
